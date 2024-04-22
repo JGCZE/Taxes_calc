@@ -1,27 +1,29 @@
 "use client"
 import React, { createContext, useState, useContext } from 'react';
+import calculate from '../utils/calculations';
 
 // Vytvoření kontextu
 const SalaryContext = createContext();
 
 // Poskytovatel kontextu
 export const SalaryProvider = ({ children }) => {
-  const [salary, setSalary] = useState('');
-  
-  
-  const calculateResult = (salary) => {
-    const grossSalary = salary*(1.3);
-    const nettoSalary = salary*(0.85)
-  }
-  calculateResult(salary);
+  const [salary, setSalary] = useState({});
+  const [results, setResults] = useState()
 
-  const value = {
-    salary,
-    setSalary,
-    grossSalary,
-    nettoSalary
+  const handleSubmit = (event) => {
+    event.preventDefault(); 
+    console.log(`Submitted Salary: ${salary}`);
+    const calculatedResults = calculate(salary)
+    setResults(calculatedResults)
   };
-
+console.log(salary, results)
+    const value = {
+      setSalary,
+      handleSubmit,
+      salary,
+      results,
+    };
+  
   return (
     <SalaryContext.Provider value={value}>
       {children}

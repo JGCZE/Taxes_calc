@@ -4,16 +4,10 @@ import style from './form.module.css'
 import { useSalary } from '../../globalContext/Context'
 
 const Form = () => {
-  const { salary, setSalary, grossSalary, nettoSalary } = useSalary(); 
+  const { salary, setSalary, handleSubmit } = useSalary(); 
 
   const handleInputChange = (event) => {
-    console.log(event.target.value)
     setSalary(event.target.value);
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault(); 
-    console.log(`Submitted Salary: ${salary}`);
   };
 
   return (
@@ -28,11 +22,8 @@ const Form = () => {
           value={salary}
           onChange={handleInputChange}
         />
-        {/* <button type='submit' className={style.button}>Odeslat</button> */}
+        <button type='submit' className={style.button}>Počítej</button>
       </form>
-
-      <p>{grossSalary}</p>
-      <p>{nettoSalary}</p>
     </div>
   );
 }
