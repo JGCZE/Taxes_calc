@@ -1,6 +1,15 @@
 .container {
+  width: 300px;
 }
 
 .form {
-  
+  display: flex;
+  flex-direction: column;
+}
+
+.form input {
+  width: 150px;
+  height: 26px;
+  font-size: 18px;
+  margin: 20px 0;
 }

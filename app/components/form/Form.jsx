@@ -4,9 +4,10 @@ import style from './form.module.css'
 import { useSalary } from '../../globalContext/Context'
 
 const Form = () => {
-  const { salary, setSalary } = useSalary(); 
+  const { salary, setSalary, grossSalary, nettoSalary } = useSalary(); 
 
   const handleInputChange = (event) => {
+    console.log(event.target.value)
     setSalary(event.target.value);
   };
 
@@ -27,8 +28,11 @@ const Form = () => {
           value={salary}
           onChange={handleInputChange}
         />
-        <button type='submit'>Odeslat</button>
+        {/* <button type='submit' className={style.button}>Odeslat</button> */}
       </form>
+
+      <p>{grossSalary}</p>
+      <p>{nettoSalary}</p>
     </div>
   );
 }

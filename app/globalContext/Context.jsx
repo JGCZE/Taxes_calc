@@ -7,13 +7,20 @@ const SalaryContext = createContext();
 // Poskytovatel kontextu
 export const SalaryProvider = ({ children }) => {
   const [salary, setSalary] = useState('');
+  
+  
+  const calculateResult = (salary) => {
+    const grossSalary = salary*(1.3);
+    const nettoSalary = salary*(0.85)
+  }
+  calculateResult(salary);
 
   const value = {
     salary,
-    setSalary
+    setSalary,
+    grossSalary,
+    nettoSalary
   };
-
-  console.log(salary);
 
   return (
     <SalaryContext.Provider value={value}>
