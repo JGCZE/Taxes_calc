@@ -12,17 +12,16 @@ export const SalaryProvider = ({ children }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault(); 
-    console.log(`Submitted Salary: ${salary}`);
     const calculatedResults = calculate(salary)
     setResults(calculatedResults)
   };
-console.log(salary, results)
-    const value = {
-      setSalary,
-      handleSubmit,
-      salary,
-      results,
-    };
+
+  const value = {
+    setSalary,
+    handleSubmit,
+    salary,
+    results,
+  };
   
   return (
     <SalaryContext.Provider value={value}>
