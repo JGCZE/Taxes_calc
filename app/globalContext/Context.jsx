@@ -1,6 +1,6 @@
 "use client"
 import React, { createContext, useState, useContext } from 'react';
-import resolveSalary from '../utils/calculations';
+import resolveSalary from '../utils/resolveSalary';
 
 // Vytvoření kontextu
 const SalaryContext = createContext();
