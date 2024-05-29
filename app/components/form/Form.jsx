@@ -4,11 +4,7 @@ import style from './form.module.css'
 import { useSalary } from '../../globalContext/Context'
 
 const Form = () => {
-  const { salary, setSalary, handleSubmit } = useSalary(); 
-
-  const handleInputChange = (event) => {
-    setSalary(event.target.value);
-  };
+  const { salary, handleSubmit, handleInputChange } = useSalary();
 
   return (
     <div className={style.container}>

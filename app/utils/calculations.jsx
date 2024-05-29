@@ -22,7 +22,7 @@ const nettoSalary = (salary) => {
   } 
 }
 
-const calculate = (salary) => {
+const resolveSalary = (salary) => {
   const brutto = bruttoDetails(salary);
   const netto = nettoSalary(salary);
 
@@ -31,4 +31,4 @@ const calculate = (salary) => {
     netto,
   };
 }
-export default calculate;
+export default resolveSalary;
