@@ -25,8 +25,8 @@ const Results = () => {
 
         <h3>Celkem zaplaceno státu na odvodech, DPH a spotřební daně</h3>
         <p>Jak jsme spočítaly odvody a daně? click</p>
-        <p>Za měsíc: {monthlyTotal.toLocaleString()}</p>
-        <p>Za rok: {yearlyTotal.toLocaleString()}</p>
+        <p>Za měsíc odvedeno státu celkem: {monthlyTotal.toLocaleString()}</p>
+        <p>Za rok odvedeno státu celkem: {yearlyTotal.toLocaleString()}</p>
       </div>
     </div>
   );

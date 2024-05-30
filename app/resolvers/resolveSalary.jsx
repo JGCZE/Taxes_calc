@@ -1,4 +1,4 @@
-import { FINAL_DPH_15, FINAL_DPH_50 } from "./dph";
+import { FINAL_DPH_15, FINAL_DPH_50 } from "../utils/dph";
 
 const SOC_INSURACE_KOEF = 0.071;
 const HEALTH_INSURANCE_KOEF = 0.045;

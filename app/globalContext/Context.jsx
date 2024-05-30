@@ -1,6 +1,7 @@
 "use client"
 import React, { createContext, useState, useContext } from 'react';
-import resolveSalary from '../utils/resolveSalary';
+import resolveSalary from '../resolvers/resolveSalary';
+import { resolveGovermentPayments } from '../resolvers/resolveGovermentPayments';
 
 // Vytvoření kontextu
 const SalaryContext = createContext();
@@ -10,6 +11,7 @@ export const SalaryProvider = ({ children }) => {
   const [salary, setRawSalary] = useState(0);
   const [displaySalary, setDisplaySalary] = useState('');
   const [results, setResults] = useState()
+  const [showWherePaid, setShowWherePaid] = useState({})
 
   const handleInputChange = (event) => {
     let value = event.target.value.replace(/\s/g, '');
@@ -28,6 +30,8 @@ export const SalaryProvider = ({ children }) => {
     event.preventDefault(); 
     const calculatedResults = resolveSalary(salary)
     setResults(calculatedResults)
+    const showWherePaid = resolveGovermentPayments(calculatedResults.total)
+    setShowWherePaid(showWherePaid)
   };
 
   const value = {
@@ -36,6 +40,7 @@ export const SalaryProvider = ({ children }) => {
     salary,
     results,
     displaySalary,
+    showWherePaid,
   };
   
   return (
