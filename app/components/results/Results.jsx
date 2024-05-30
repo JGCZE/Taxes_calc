@@ -5,7 +5,7 @@ import { useSalary } from '../../globalContext/Context'
 
 const Results = () => {
   const { results } = useSalary()
-
+console.log(results)
   return (
     <div>Results
       {results ? (
