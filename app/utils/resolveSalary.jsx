@@ -6,15 +6,15 @@ const TAX_BACKUP_KOEF = 0.15;
 const TAX_DISCOUNT = 2570;
 const GROSS_BRUTTO_KOEF = 1.338;
  
-const TOTAL_KOEF = SOC_INSURACE_KOEF + HEALTH_INSURANCE_KOEF // + taxBackup(salary);
+const TOTAL_KOEF = SOC_INSURACE_KOEF + HEALTH_INSURANCE_KOEF
 
 export const correctFormat = (number) => {
   return Math.ceil(number).toLocaleString();
 }
 
 const taxBackup = (salary) => {
-  console.log((salary * TAX_BACKUP_KOEF) - TAX_DISCOUNT)
-  return Math.ceil((salary * TAX_BACKUP_KOEF) - TAX_DISCOUNT);
+  const taxBeforeDiscount = Math.ceil(salary * TAX_BACKUP_KOEF);
+  return Math.max(0, taxBeforeDiscount - TAX_DISCOUNT);
 }
 
 const grossBruttoCalc = (salary) => {
@@ -34,7 +34,7 @@ const bruttoDetails = (salary) => {
 
 const nettoSalary = (salary) => {
   return {
-    netto: (salary * (1 - TOTAL_KOEF)) - taxBackup(salary),
+    netto: Math.ceil(salary * (1 - TOTAL_KOEF)) - taxBackup(salary),
   } 
 }
 
@@ -46,7 +46,7 @@ const dphCalc = (netto) => {
 
 const totalPayed = (grossBrutto, netto, dph) => {
   const baseAmount = grossBrutto - netto + dph;
-console.log(grossBrutto, netto, dph);
+
   return {
     monthlyTotal: Math.ceil(baseAmount),
     yearlyTotal: Math.ceil(baseAmount * 12)

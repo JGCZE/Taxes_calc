@@ -7,11 +7,21 @@ const SalaryContext = createContext();
 
 // Poskytovatel kontextu
 export const SalaryProvider = ({ children }) => {
-  const [salary, setSalary] = useState({});
+  const [salary, setRawSalary] = useState(0);
+  const [displaySalary, setDisplaySalary] = useState('');
   const [results, setResults] = useState()
 
   const handleInputChange = (event) => {
-    setSalary(event.target.value);
+    let value = event.target.value.replace(/\s/g, '');
+    const numericValue = parseInt(value, 10);
+
+    if (!isNaN(numericValue)) {
+      setRawSalary(numericValue);
+      setDisplaySalary(numericValue.toLocaleString('cs-CZ'));
+    } else {
+      setDisplaySalary(''); // Reset pokud vstup není platné číslo
+      setRawSalary(0);
+    }
   };
 
   const handleSubmit = (event) => {
@@ -21,11 +31,11 @@ export const SalaryProvider = ({ children }) => {
   };
 
   const value = {
-    setSalary,
     handleSubmit,
     handleInputChange,
     salary,
     results,
+    displaySalary,
   };
   
   return (

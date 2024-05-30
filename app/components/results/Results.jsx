@@ -2,7 +2,6 @@
 import React from 'react'
 import style from './results.module.css'
 import { useSalary } from '../../globalContext/Context'
-import { correctFormat } from '@/app/utils/resolveSalary'
 
 const Results = () => {
   const { results } = useSalary()
@@ -20,14 +19,14 @@ const Results = () => {
     <div>Results
       <div className={style.container}>
         <h3>Základní přehled mzdy</h3>
-        <p>Náklady na zaměstnance: {grossBrutto}</p>
-        <p>Hrubá mzda: {brutto}</p>
-        <p>Čistá mzda: {netto}</p>
+        <p>Náklady na zaměstnance: {grossBrutto.toLocaleString()}</p>
+        <p>Hrubá mzda: {brutto.toLocaleString()}</p>
+        <p>Čistá mzda: {netto.toLocaleString()}</p>
 
         <h3>Celkem zaplaceno státu na odvodech, DPH a spotřební daně</h3>
         <p>Jak jsme spočítaly odvody a daně? click</p>
         <p>Za měsíc: {monthlyTotal.toLocaleString()}</p>
-        <p>Za rok: {yearlyTotal}</p>
+        <p>Za rok: {yearlyTotal.toLocaleString()}</p>
       </div>
     </div>
   );
